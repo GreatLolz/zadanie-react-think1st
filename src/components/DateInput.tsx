@@ -41,8 +41,9 @@ export default function DateInput({ label, onChange }: DateInputProps) {
                     required={true}
                     navLayout="around"
                     classNames={{
-                        today: ""
+                        today: "",
                     }}
+                    style={{ width: 'auto', maxWidth: '300px' }}
                 />
             </div>
             
