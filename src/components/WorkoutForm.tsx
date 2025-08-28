@@ -44,7 +44,6 @@ export default function WorkoutForm() {
     }, [formData])    
 
     const handleChange = (name: string, newValue: string | number | File | Date | null) => {
-        console.log(newValue)
         setFormData({ ...formData, [name]: newValue })
     }
 
@@ -64,7 +63,7 @@ export default function WorkoutForm() {
             <DateInput label="Date" onChange={(newDate) => handleChange("date", newDate)}/>
             <button className="bg-violet-600 text-white font-semibold p-2 rounded-sm mt-8 hover:cursor-pointer hover:bg-violet-700 disabled:opacity-30 disabled:cursor-not-allowed" 
                 type="submit"
-                onClick={() => { handleSubmit() }}
+                onClick={(e) => { e.preventDefault(); handleSubmit() }}
                 disabled={submitDisabled}
             >Send Application</button>
         </form>

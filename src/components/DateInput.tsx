@@ -41,7 +41,6 @@ export default function DateInput({ label, onChange }: DateInputProps) {
 
         const newDate = new Date(date)
         newDate.setHours(Number(h), Number(m), 0, 0)
-        console.log(newDate)
 
         setDate(newDate);
         onChange(newDate)
