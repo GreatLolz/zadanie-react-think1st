@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Input from "./Input";
 import { type WorkoutFormData } from "../types/types";
 import Slider from "./Slider";
@@ -15,6 +15,20 @@ export default function WorkoutForm() {
             date: null,
         }
     )
+    const [submitDisabled, setSubmitDisabled] = useState<boolean>(true)
+
+    useEffect(() => {
+        const checkEmptyFields = () => {
+            return Object.values(formData).some((value) => {
+                if (typeof value === "string") {
+                    return value.trim() === "";
+                }
+                return value === null
+            })
+        }
+
+        setSubmitDisabled(checkEmptyFields())
+    }, [formData])
 
     const handleChange = (name: string, newValue: string | number | File | Date | null) => {
         setFormData({ ...formData, [name]: newValue })
@@ -32,9 +46,10 @@ export default function WorkoutForm() {
             <Input label="Email Address" value={formData.email} type="email" onChange={(newValue) => handleChange("email", newValue)} />
             <Slider label="Age" value={formData.age} min={8} max={100} step={1} onChange={(newValue) => handleChange("age", newValue)}></Slider>
             <FileInput label="Photo" onChange={(newFile) => handleChange("photo", newFile)}></FileInput>
-            <button className="bg-violet-600 text-white font-semibold p-2 rounded-sm mt-8 hover:cursor-pointer hover:bg-violet-700" 
+            <button className="bg-violet-600 text-white font-semibold p-2 rounded-sm mt-8 hover:cursor-pointer hover:bg-violet-700 disabled:opacity-30 disabled:cursor-not-allowed" 
                 type="submit"
                 onClick={(e) => { e.preventDefault(); handleSubmit() }}
+                disabled={submitDisabled}
             >Send Application</button>
         </form>
         
