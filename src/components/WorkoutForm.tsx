@@ -4,6 +4,7 @@ import { FORM_ERRORS, type Errors, type WorkoutFormData } from "../types/types";
 import Slider from "./Slider";
 import FileInput from "./FileInput";
 import DateInput from "./DateInput";
+import { submitForm } from "../utils/api";
 
 export default function WorkoutForm() {
     const [formData, setFormData] = useState<WorkoutFormData>(
@@ -48,7 +49,7 @@ export default function WorkoutForm() {
     }
 
     const handleSubmit = () => {
-        console.log(formData)
+        submitForm(formData);
     }
 
     return (
