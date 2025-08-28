@@ -16,7 +16,7 @@ export default function DateInput({ label, onChange }: DateInputProps) {
         <div className="flex flex-col w-full gap-1">
             <label className="text-sm">{label}</label>
             <DayPicker
-                className="bg-white w-fit p-3 rounded-md border-1 border-violet-300"
+                className="bg-white w-full items-center justify-center flex p-3 rounded-md border-1 border-violet-300"
                 mode="single"
                 selected={date}
                 onSelect={handleChange}
