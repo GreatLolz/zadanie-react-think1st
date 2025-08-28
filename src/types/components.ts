@@ -13,3 +13,8 @@ export interface SliderProps {
     step: number;
     onChange: (value: number) => void;
 }
+
+export interface FileInputProps {
+    label: string;
+    onChange: (file: File | null) => void;
+}
