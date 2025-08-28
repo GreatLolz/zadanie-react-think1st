@@ -17,6 +17,9 @@ export default function Slider({ label, value, min, max, step, onChange }: Slide
                 max={max}
                 step={step}
             />
+            <div className="flex flex-row justify-center mt-[-0.5em]">
+                <span>{value}</span>
+            </div>
         </div>
     )
 }
