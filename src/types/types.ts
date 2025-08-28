@@ -7,6 +7,10 @@ export interface WorkoutFormData {
     date: Date | null
 }
 
+export type Errors = {
+    [key in keyof WorkoutFormData]?: string;
+}
+
 export const WORKOUT_HOURS = [
     "12:00",
     "14:00",
@@ -14,3 +18,7 @@ export const WORKOUT_HOURS = [
     "18:30",
     "20:00"
 ]
+
+export const FORM_ERRORS = {
+    email: "Please use correct formatting. Example: address@email.com"
+}

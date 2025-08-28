@@ -3,6 +3,7 @@ export interface InputProps {
     value: string;
     type: string;
     onChange: (value: string) => void;
+    error: string | undefined;
 }
 
 export interface SliderProps {
