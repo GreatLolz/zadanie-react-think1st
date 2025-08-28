@@ -30,7 +30,7 @@ export default function DateInput({ label, onChange }: DateInputProps) {
     }
 
     return (
-        <div className="flex flex-row gap-3">
+        <div className="flex flex-col md:flex-row gap-3">
             <div>
                 <label className="text-sm">{label}</label>
                 <DayPicker
@@ -43,20 +43,23 @@ export default function DateInput({ label, onChange }: DateInputProps) {
                     classNames={{
                         today: "",
                     }}
-                    style={{ width: 'auto', maxWidth: '300px' }}
+                    style={{ width: 'auto' }}
                 />
             </div>
             
             <div className="flex flex-col gap-1">
                 {date ? <label className="text-sm">Time</label> : <></> }
-                {date ? WORKOUT_HOURS.map((hour, index) => {
-                    return (
-                        <label key={index} className={`hover:cursor-pointer bg-white p-2 px-3 rounded-md ${workoutHour === hour ? "border-violet-700 border-2" : "border-violet-300 border-1"}`}>
-                            <input type="radio" name="workoutHour" value={hour} checked={workoutHour === hour} onChange={() => {handleHourChange(hour)}} className="hidden"/>
-                            {hour}
-                        </label>
-                    )
-                }) : <></>}
+                <div className="flex flex-row gap-2 flex-wrap">
+                    {date ? WORKOUT_HOURS.map((hour, index) => {
+                        return (
+                            <label key={index} className={`hover:cursor-pointer bg-white p-2 px-3 rounded-md ${workoutHour === hour ? "border-violet-700 border-2" : "border-violet-300 border-1"}`}>
+                                <input type="radio" name="workoutHour" value={hour} checked={workoutHour === hour} onChange={() => {handleHourChange(hour)}} className="hidden"/>
+                                {hour}
+                            </label>
+                        )
+                    }) : <></>}
+                </div>
+                
             </div>
         </div>
     )

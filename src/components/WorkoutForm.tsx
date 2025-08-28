@@ -40,7 +40,7 @@ export default function WorkoutForm() {
     }
 
     return (
-        <form className="flex flex-col gap-3 w-full max-w-90">
+        <form className="flex flex-col gap-3 w-full max-w-95">
             <h1 className="text-xl font-semibold">Personal info</h1>
             <Input label="First Name" value={formData.firstName} type="text" onChange={(newValue) => handleChange("firstName", newValue)} />
             <Input label="Last Name" value={formData.lastName} type="text" onChange={(newValue) => handleChange("lastName", newValue)} />
