@@ -1,9 +1,12 @@
 import "./index.css"
+import WorkoutForm from "./components/WorkoutForm"
 
 function App() {
   return (
     <>
-      <h1 className="text-3xl">App</h1>
+      <div className="flex flex-col min-h-screen bg-violet-100 w-full items-center p-20">
+        <WorkoutForm />
+      </div>
     </>
   )
 }
