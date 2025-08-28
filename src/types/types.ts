@@ -11,6 +11,12 @@ export type Errors = {
     [key in keyof WorkoutFormData]?: string;
 }
 
+export interface Holiday {
+    date: Date,
+    name: string,
+    type: string
+}
+
 export const WORKOUT_HOURS = [
     "12:00",
     "14:00",
