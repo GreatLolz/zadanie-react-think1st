@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Input from "./Input";
 import { type WorkoutFormData } from "../types/types";
+import Slider from "./Slider";
 
 export default function WorkoutForm() {
     const [formData, setFormData] = useState<WorkoutFormData>(
@@ -28,6 +29,7 @@ export default function WorkoutForm() {
             <Input label="First Name" value={formData.firstName} type="text" onChange={(newValue) => handleChange("firstName", newValue)} />
             <Input label="Last Name" value={formData.lastName} type="text" onChange={(newValue) => handleChange("lastName", newValue)} />
             <Input label="Email Address" value={formData.email} type="email" onChange={(newValue) => handleChange("email", newValue)} />
+            <Slider label="Age" value={formData.age} min={8} max={100} step={1} onChange={(newValue) => handleChange("age", newValue)}></Slider>
             <button className="bg-violet-600 text-white font-semibold p-2 rounded-sm mt-8 hover:cursor-pointer hover:bg-violet-700" 
                 type="submit"
                 onClick={(e) => { e.preventDefault(); handleSubmit() }}
