@@ -18,3 +18,8 @@ export interface FileInputProps {
     label: string;
     onChange: (file: File | null) => void;
 }
+
+export interface DateInputProps {
+    label: string;
+    onChange: (date: Date | null) => void;
+}

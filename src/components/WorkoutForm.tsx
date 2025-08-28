@@ -3,6 +3,7 @@ import Input from "./Input";
 import { type WorkoutFormData } from "../types/types";
 import Slider from "./Slider";
 import FileInput from "./FileInput";
+import DateInput from "./DateInput";
 
 export default function WorkoutForm() {
     const [formData, setFormData] = useState<WorkoutFormData>(
@@ -46,6 +47,8 @@ export default function WorkoutForm() {
             <Input label="Email Address" value={formData.email} type="email" onChange={(newValue) => handleChange("email", newValue)} />
             <Slider label="Age" value={formData.age} min={8} max={100} step={1} onChange={(newValue) => handleChange("age", newValue)}></Slider>
             <FileInput label="Photo" onChange={(newFile) => handleChange("photo", newFile)}></FileInput>
+            <h1 className="text-xl font-semibold mt-5">Your workout</h1>
+            <DateInput label="Date" onChange={(newDate) => handleChange("date", newDate)}/>
             <button className="bg-violet-600 text-white font-semibold p-2 rounded-sm mt-8 hover:cursor-pointer hover:bg-violet-700 disabled:opacity-30 disabled:cursor-not-allowed" 
                 type="submit"
                 onClick={(e) => { e.preventDefault(); handleSubmit() }}
