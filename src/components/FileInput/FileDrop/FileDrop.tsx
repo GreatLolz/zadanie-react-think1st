@@ -10,7 +10,8 @@ export default function FileDrop({fileName, onDrop, onClick, onRemoveClick}: Fil
                 onDragLeave={(e) => {e.preventDefault()}}
             >
                 <span className="text-neutral-400">
-                    <span className="underline text-violet-600 cursor-pointer" onClick={onClick}>Upload a file</span> or drag and drop here
+                    <span className="underline text-violet-600 cursor-pointer" onClick={onClick}>Upload a file</span>
+                    <span className="hidden md:inline"> or drag and drop here</span>
                 </span>
             </div>
         ) : (
