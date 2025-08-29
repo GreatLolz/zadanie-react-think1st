@@ -17,6 +17,7 @@ export default function Calendar({date, onSelect, disabled}: CalendarProps) {
             ]}
             classNames={{
                 today: "",
+                disabled: "text-neutral-300"
             }}
         />
     )
