@@ -47,7 +47,7 @@ export default function FileInput({ label, onChange }: FileInputProps) {
                     <span className="text-slate-900 font-semibold">
                         {fileName}
                     </span>
-                    <span className="hover:cursor-pointer5" onClick={handleRemove}>
+                    <span className="hover:cursor-pointer" onClick={handleRemove}>
                         <CloseIcon />
                     </span>
                 </div>

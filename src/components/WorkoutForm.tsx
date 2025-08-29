@@ -50,6 +50,7 @@ export default function WorkoutForm() {
     }
 
     const handleSubmit = () => {
+        console.log(formData)
         submitForm(formData);
     }
 
