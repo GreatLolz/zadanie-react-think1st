@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import type { FileInputProps } from "./types";
-import CloseIcon from "../icons/CloseIcon";
+import FileDrop from "./FileDrop/FileDrop";
 
 export default function FileInput({ label, onChange }: FileInputProps) {
     const inputRef = useRef<HTMLInputElement>(null);
@@ -32,27 +32,7 @@ export default function FileInput({ label, onChange }: FileInputProps) {
         <div className="flex flex-col w-full gap-1">
             <input className="hidden" type="file" onChange={(e) => {handleFileChange(e)}} ref={inputRef}/>
             <label className="text-sm">{label}</label>
-            {!fileName ? (
-                <div className="flex justify-center items-center bg-white h-20 border-1 border-violet-300 rounded-lg z-50"
-                    onDrop={handleDrop} 
-                    onDragOver={(e) => {e.preventDefault()}}
-                    onDragLeave={(e) => {e.preventDefault()}}
-                >
-                    <span className="text-neutral-400">
-                        <span className="underline text-violet-600 cursor-pointer" onClick={handleInputClick}>Upload a file</span> or drag and drop here
-                    </span>
-                </div>
-            ) : (
-                <div className="flex justify-center items-center bg-white h-20 border-1 border-violet-300 rounded-lg w-full gap-2">
-                    <span className="text-slate-900 font-semibold">
-                        {fileName}
-                    </span>
-                    <span className="hover:cursor-pointer" onClick={handleRemove}>
-                        <CloseIcon />
-                    </span>
-                </div>
-            )}
-            
+            <FileDrop fileName={fileName} onClick={handleInputClick} onDrop={handleDrop} onRemoveClick={handleRemove}/>
         </div>
     )
 }
