@@ -21,7 +21,7 @@ export default function Slider({ label, value, min, max, step, onChange }: Slide
         }
 
         updateValuePosition();
-    }, [value])
+    }, [value, max, min])
 
     return (
         <div className="flex flex-col w-full relative">
