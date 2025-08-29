@@ -1,13 +1,10 @@
+import { APP_CONFIG } from "../config";
 import type { Holiday, WorkoutFormData } from "../types/form";
-
-const NINJAS_API_KEY = import.meta.env.VITE_NINJAS_API_KEY;
-const NINJAS_API_URL = import.meta.env.VITE_NINJAS_API_URL || "https://api.api-ninjas.com/v1/holidays?country=PL";
-const FORM_SUBMIT_URL = import.meta.env.VITE_FORM_SUBMIT_URL || "/submit"
 
 export async function getHolidayData(): Promise<Holiday[] | undefined> {
     try {
-        const response = await fetch(NINJAS_API_URL, {
-            headers: {"X-Api-Key":NINJAS_API_KEY}
+        const response = await fetch(APP_CONFIG.ninjasApiUrl, {
+            headers: {"X-Api-Key":APP_CONFIG.ninjasApiKey}
         })
         if (response.ok) {
             const data = await response.json();
@@ -40,7 +37,7 @@ export async function submitForm(workoutFormData: WorkoutFormData): Promise<void
         formData.append("date", workoutFormData.date!.toString())
 
 
-        const response = await fetch(FORM_SUBMIT_URL,
+        const response = await fetch(APP_CONFIG.formSubmitUrl,
             {
                 method: "POST",
                 body: formData
