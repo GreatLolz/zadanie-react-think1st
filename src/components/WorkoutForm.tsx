@@ -1,58 +1,19 @@
-import { useEffect, useState } from "react";
 import Input from "./Input/Input";
-import { FORM_ERRORS, type Errors, type WorkoutFormData } from "../types/form";
 import Slider from "./Slider/Slider";
 import FileInput from "./FileInput/FileInput";
 import DateInput from "./DateInput/DateInput";
-import { submitForm } from "../utils/api";
 import CTAButton from "./CTAButton/CTAButton";
+import { useWorkoutForm } from "../hooks/useWorkoutForm";
 
 export default function WorkoutForm() {
-    const [formData, setFormData] = useState<WorkoutFormData>(
-        {
-            firstName: "",
-            lastName: "",
-            email: "",
-            age: 8,
-            photo: null,
-            date: null,
-        }
-    )
-    const [errors, setErrors] = useState<Errors>({})
-
-    const [submitDisabled, setSubmitDisabled] = useState<boolean>(true)
-
-    useEffect(() => {
-        const newErrors: Errors = {}
-    
-        if (formData.email !== "") {
-            const emailPattern = /^\S+@\S+\.\S+$/;
-            if (!formData.email.match(emailPattern)) {
-                newErrors.email = FORM_ERRORS.email
-            }
-        }
-    
-        setErrors(newErrors)
-    
-        const hasEmptyFields = Object.values(formData).some((value) => {
-            if (typeof value === "string") {
-                return value.trim() === "";
-            }
-            return value === null
-        })
-    
-        const hasErrors = Object.values(newErrors).some(value => value)
-        setSubmitDisabled(hasErrors || hasEmptyFields)
-    }, [formData])    
-
-    const handleChange = (name: string, newValue: string | number | File | Date | null) => {
-        setFormData({ ...formData, [name]: newValue })
-    }
-
-    const handleSubmit = () => {
-        console.log(formData)
-        submitForm(formData);
-    }
+    const { formData, errors, submitDisabled, handleChange, handleSubmit } = useWorkoutForm({
+        firstName: "",
+        lastName: "",
+        email: "",
+        age: 8,
+        photo: null,
+        date: null,
+    })
 
     return (
         <form className="flex flex-col gap-3 w-full max-w-95">
