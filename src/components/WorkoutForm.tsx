@@ -23,6 +23,7 @@ export default function WorkoutForm() {
             <Input label="Email Address" value={formData.email} type="email" onChange={(newValue) => handleChange("email", newValue)} error={errors.email}/>
             <Slider label="Age" value={formData.age} min={8} max={100} step={1} onChange={(newValue) => handleChange("age", newValue)}></Slider>
             <FileInput label="Photo" onChange={(newFile) => handleChange("photo", newFile)}></FileInput>
+            
             <h1 className="text-xl font-semibold mt-5">Your workout</h1>
             <DateInput label="Date" onChange={(newDate) => handleChange("date", newDate)}/>
             <CTAButton text="Send Application" onClick={handleSubmit} disabled={submitDisabled}/>
