@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import type { FileInputProps } from "./types";
+import CloseIcon from "../icons/CloseIcon";
 
 export default function FileInput({ label, onChange }: FileInputProps) {
     const inputRef = useRef<HTMLInputElement>(null);
@@ -46,8 +47,8 @@ export default function FileInput({ label, onChange }: FileInputProps) {
                     <span className="text-slate-900 font-semibold">
                         {fileName}
                     </span>
-                    <span className="w-5 hover:cursor-pointer" onClick={handleRemove}>
-                        <svg fill="#0f172a" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"><path fillRule="evenodd" d="M1 12C1 5.925 5.925 1 12 1s11 4.925 11 11-4.925 11-11 11S1 18.075 1 12zm8.036-4.024a.75.75 0 00-1.06 1.06L10.939 12l-2.963 2.963a.75.75 0 101.06 1.06L12 13.06l2.963 2.964a.75.75 0 001.061-1.06L13.061 12l2.963-2.964a.75.75 0 10-1.06-1.06L12 10.939 9.036 7.976z"></path></g></svg>
+                    <span className="hover:cursor-pointer5" onClick={handleRemove}>
+                        <CloseIcon />
                     </span>
                 </div>
             )}
