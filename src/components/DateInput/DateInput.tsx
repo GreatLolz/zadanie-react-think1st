@@ -6,23 +6,7 @@ import "./dateInput.css"
 import { WORKOUT_HOURS } from "../../types/form";
 import InfoIcon from "../icons/InfoIcon";
 import { useHolidayData } from "../../hooks/useHolidayData";
-
-function isSameDay(d1: Date, d2: Date): boolean {
-    return (
-        d1.getFullYear() === d2.getFullYear() &&
-        d1.getMonth() === d2.getMonth() &&
-        d1.getDate() === d2.getDate()
-    );
-}
-
-function setHour(date: Date, hour: string): Date {
-    const [h, m] = hour.split(":");
-
-    const newDate = new Date(date)
-    newDate.setHours(Number(h), Number(m), 0, 0)
-
-    return newDate
-}
+import { isSameDay, setHour } from "../../utils/date";
 
 export default function DateInput({ label, onChange }: DateInputProps) {
     const { nationalHolidays, observances } = useHolidayData();
