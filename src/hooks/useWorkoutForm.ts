@@ -35,7 +35,6 @@ export function useWorkoutForm(defaultData: WorkoutFormData) {
     }
 
     const handleSubmit = () => {
-        console.log(formData)
         submitForm(formData);
     }
 
