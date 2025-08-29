@@ -18,7 +18,7 @@ export default function FileDrop({fileName, onDrop, onClick, onRemoveClick}: Fil
                 <span className="text-slate-900 font-semibold">
                     {fileName}
                 </span>
-                <span className="hover:cursor-pointer" onClick={onRemoveClick}>
+                <span className="text-slate-900 hover:text-red-500 hover:cursor-pointer" onClick={onRemoveClick}>
                     <CloseIcon />
                 </span>
             </div>

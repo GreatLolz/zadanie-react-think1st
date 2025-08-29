@@ -49,7 +49,7 @@ export default function DateInput({ label, onChange }: DateInputProps) {
                 <Calendar date={date} onSelect={handleDateChange} disabled={nationalHolidays.map(h => (new Date(h.date)))} />
                 { info && 
                     <div className="flex flex-row text-sm leading-4 gap-2 mt-2">
-                        <span>
+                        <span className="text-violet-300">
                             <InfoIcon />
                         </span>
                         It is {info}

@@ -16,7 +16,7 @@ export default function Input({ label, value, type, onChange, error }: InputProp
             {
                 error && 
                 <div className="flex flex-row text-xs leading-4 w-50 gap-2">
-                    <span className="mt-1">
+                    <span className="text-red-500 mt-1">
                         <ErrorIcon />
                     </span>
                     {error}
