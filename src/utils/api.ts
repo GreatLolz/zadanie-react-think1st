@@ -38,7 +38,7 @@ export async function submitForm(workoutFormData: WorkoutFormData): Promise<void
         formData.append("date", workoutFormData.date!.toString())
 
 
-        const response = await fetch("http://letsworkout.pl/submit",
+        const response = await fetch("/submit",
             {
                 method: "POST",
                 body: formData

@@ -5,5 +5,15 @@ import tailwindcss from '@tailwindcss/vite'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), tailwindcss()],
-  base: "/zadanie-react-think1st/"
+  base: "/zadanie-react-think1st/",
+  server: {
+    cors: false,
+    proxy: {
+      "/submit": {
+        target: "http://letsworkout.pl/",
+        changeOrigin: true,
+        secure: false
+      }
+    }
+  }
 })
