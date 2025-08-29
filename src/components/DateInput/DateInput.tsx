@@ -1,4 +1,3 @@
-import { DayPicker } from "react-day-picker";
 import "react-day-picker/style.css"
 import type { DateInputProps } from "./types";
 import { useState } from "react";
@@ -7,6 +6,7 @@ import { WORKOUT_HOURS } from "../../types/form";
 import InfoIcon from "../icons/InfoIcon";
 import { useHolidayData } from "../../hooks/useHolidayData";
 import { isSameDay, setHour } from "../../utils/date";
+import Calendar from "./Calendar/Calendar";
 
 export default function DateInput({ label, onChange }: DateInputProps) {
     const { nationalHolidays, observances } = useHolidayData();
@@ -42,28 +42,11 @@ export default function DateInput({ label, onChange }: DateInputProps) {
         setWorkoutHour(hour);
     }
 
-    
-
     return (
         <div className="flex flex-col md:flex-row gap-3">
             <div>
                 <label className="text-sm">{label}</label>
-                <DayPicker
-                    className="bg-white w-auto md:w-76 items-center justify-center flex p-3 rounded-md border-1 border-violet-300"
-                    mode="single"
-                    selected={date}
-                    onSelect={handleDateChange}
-                    required={true}
-                    navLayout="around"
-                    weekStartsOn={1}
-                    disabled={[
-                        { dayOfWeek: [0] },
-                        ...nationalHolidays.map(h => (new Date(h.date)))
-                    ]}
-                    classNames={{
-                        today: "",
-                    }}
-                />
+                <Calendar date={date} onSelect={handleDateChange} disabled={nationalHolidays.map(h => (new Date(h.date)))} />
                 { info && 
                     <div className="flex flex-row text-sm leading-4 gap-2 mt-2">
                         <span>
