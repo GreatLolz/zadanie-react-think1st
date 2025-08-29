@@ -1,11 +1,11 @@
 import { DayPicker } from "react-day-picker";
 import "react-day-picker/style.css"
 import type { DateInputProps } from "./types";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./dateInput.css"
-import { WORKOUT_HOURS, type Holiday } from "../../types/form";
-import { getHolidayData } from "../../utils/api";
+import { WORKOUT_HOURS } from "../../types/form";
 import InfoIcon from "../icons/InfoIcon";
+import { useHolidayData } from "../../hooks/useHolidayData";
 
 function isSameDay(d1: Date, d2: Date): boolean {
     return (
@@ -25,9 +25,8 @@ function setHour(date: Date, hour: string): Date {
 }
 
 export default function DateInput({ label, onChange }: DateInputProps) {
+    const { nationalHolidays, observances } = useHolidayData();
     const [date, setDate] = useState<Date | undefined>(undefined);
-    const [nationalHolidays, setNationalHolidays] = useState<Holiday[]>([]);
-    const [observances, setObservances] = useState<Holiday[]>([]);
     const [workoutHour, setWorkoutHour] = useState<string | null>(null)
     const [info, setInfo] = useState<string | null>(null);
 
@@ -59,29 +58,7 @@ export default function DateInput({ label, onChange }: DateInputProps) {
         setWorkoutHour(hour);
     }
 
-    useEffect(() => {
-        const getData = async () => {
-            const data = await getHolidayData();
-            if (!data) return;
-
-            const _observances: Holiday[] = [];
-            const _nationalHolidays: Holiday[] = [];
-
-            for (const holiday of data) {
-                if (holiday.type === "OBSERVANCE") {
-                    _observances.push(holiday);
-                }
-                else if (holiday.type === "NATIONAL_HOLIDAY") {
-                    _nationalHolidays.push(holiday);
-                }
-            }
-
-            setObservances(_observances)
-            setNationalHolidays(_nationalHolidays)
-        }
-
-        getData();
-    }, [])
+    
 
     return (
         <div className="flex flex-col md:flex-row gap-3">
