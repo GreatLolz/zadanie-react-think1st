@@ -5,6 +5,7 @@ import Slider from "./Slider/Slider";
 import FileInput from "./FileInput/FileInput";
 import DateInput from "./DateInput/DateInput";
 import { submitForm } from "../utils/api";
+import CTAButton from "./CTAButton/CTAButton";
 
 export default function WorkoutForm() {
     const [formData, setFormData] = useState<WorkoutFormData>(
@@ -62,11 +63,7 @@ export default function WorkoutForm() {
             <FileInput label="Photo" onChange={(newFile) => handleChange("photo", newFile)}></FileInput>
             <h1 className="text-xl font-semibold mt-5">Your workout</h1>
             <DateInput label="Date" onChange={(newDate) => handleChange("date", newDate)}/>
-            <button className="bg-violet-600 text-white font-semibold p-2 rounded-sm mt-8 hover:cursor-pointer hover:bg-violet-700 disabled:opacity-30 disabled:cursor-not-allowed" 
-                type="submit"
-                onClick={(e) => { e.preventDefault(); handleSubmit() }}
-                disabled={submitDisabled}
-            >Send Application</button>
+            <CTAButton text="Send Application" onClick={handleSubmit} disabled={submitDisabled}/>
         </form>
         
     )
