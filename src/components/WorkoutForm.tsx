@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import Input from "./Input";
-import { FORM_ERRORS, type Errors, type WorkoutFormData } from "../types/types";
-import Slider from "./Slider";
-import FileInput from "./FileInput";
-import DateInput from "./DateInput";
+import Input from "./Input/Input";
+import { FORM_ERRORS, type Errors, type WorkoutFormData } from "../types/form";
+import Slider from "./Slider/Slider";
+import FileInput from "./FileInput/FileInput";
+import DateInput from "./DateInput/DateInput";
 import { submitForm } from "../utils/api";
 
 export default function WorkoutForm() {

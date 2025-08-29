@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import type { FileInputProps } from "../types/components";
+import type { FileInputProps } from "./types";
 
 export default function FileInput({ label, onChange }: FileInputProps) {
     const inputRef = useRef<HTMLInputElement>(null);

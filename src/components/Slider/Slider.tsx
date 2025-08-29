@@ -1,4 +1,4 @@
-import type { SliderProps } from "../types/components";
+import type { SliderProps } from "./types";
 
 export default function Slider({ label, value, min, max, step, onChange }: SliderProps) {
 

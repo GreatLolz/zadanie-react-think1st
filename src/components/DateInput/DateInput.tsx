@@ -1,10 +1,10 @@
 import { DayPicker } from "react-day-picker";
 import "react-day-picker/style.css"
-import type { DateInputProps } from "../types/components";
+import type { DateInputProps } from "./types";
 import { useEffect, useState } from "react";
 import "./dateInput.css"
-import { WORKOUT_HOURS, type Holiday } from "../types/types";
-import { getHolidayData } from "../utils/api";
+import { WORKOUT_HOURS, type Holiday } from "../../types/form";
+import { getHolidayData } from "../../utils/api";
 
 function isSameDay(d1: Date, d2: Date): boolean {
     return (

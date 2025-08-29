@@ -1,4 +1,4 @@
-import type { Holiday, WorkoutFormData } from "../types/types";
+import type { Holiday, WorkoutFormData } from "../types/form";
 
 const NINJAS_API_KEY = import.meta.env.VITE_NINJAS_API_KEY;
 
